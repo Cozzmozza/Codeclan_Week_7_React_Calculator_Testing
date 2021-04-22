@@ -73,7 +73,7 @@ describe("Calculator", () => {
     cy.get('#operator_divide').click();
     cy.get('#number0').click();
     cy.get('#operator_equals').click();
-    cy.get('.display').should('contain', 'undefined')
+    cy.get('.display').should('contain', 'Undefined')
   })
 })
 
