@@ -3,7 +3,7 @@ describe("Calculator", () => {
     cy.visit("http://localhost:3000");
   })
 
-  it('should have working number buttons', () => {
+  it('should have working number buttons that display the running total', () => {
     cy.get('#number2').click();
     cy.get('.display').should('contain', '2')
   })
@@ -19,6 +19,7 @@ describe("Calculator", () => {
 
   // Is the output as expected for a range of numbers (for example, positive, negative, decimals and very large numbers)?
   it('output is expected after multiple calculations un running total', () => {
+    // Take 9, subtract 3, equal it, then add 7 to the result, to btain 13
     cy.get('#number9').click();
     cy.get('#operator_subtract').click();
     cy.get('#number3').click();
@@ -30,6 +31,7 @@ describe("Calculator", () => {
   })
 
   it('output can be negative', () => {
+    // Five minus 9 should equal -4
     cy.get('#number5').click();
     cy.get('#operator_subtract').click();
     cy.get('#number9').click();
@@ -39,6 +41,7 @@ describe("Calculator", () => {
 
 
   it('output can be decimal', () => {
+    // 9 divided by 5 should equal 1.8
     cy.get('#number9').click();
     cy.get('#operator_divide').click();
     cy.get('#number5').click();
@@ -48,6 +51,7 @@ describe("Calculator", () => {
   })
 
   it('output can be large', () => {
+    //873448 multipled by 592975 should equal 517932827800
     cy.get('#number8').click();
     cy.get('#number7').click();
     cy.get('#number3').click();
@@ -67,8 +71,8 @@ describe("Calculator", () => {
 
   // What does the code do in exceptional circumstances? - Output for dividing by zero is 'Infinity'
 
-  // I want it to instead display 'undefined'
-  it('dividing by zero returns string "undefined"', () => {
+  // We want it to instead display 'Undefined'
+  it('dividing by zero returns string "Undefined"', () => {
     cy.get('#number8').click();
     cy.get('#operator_divide').click();
     cy.get('#number0').click();
